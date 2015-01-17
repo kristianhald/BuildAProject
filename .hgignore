@@ -1,0 +1,11 @@
+syntax: glob
+packages/*
+*/bin/*
+*/obj/*
+*.DotSettings.user
+*.suo
+*.csproj.user
+TestExecution/*
+*ncrunch*
+_NCrunch_*
+*.orig

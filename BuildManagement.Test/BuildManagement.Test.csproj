@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7D5AA5B4-C82C-4396-B440-5265D11D2AD8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BuildAProject.BuildManagement.Test</RootNamespace>
+    <AssemblyName>BuildAProject.BuildManagement.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NuGet.Core.2.8.1\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.Albedo">
+      <HintPath>..\packages\Albedo.1.0.1\lib\net35\Ploeh.Albedo.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture">
+      <HintPath>..\packages\AutoFixture.3.18.5\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.AutoMoq">
+      <HintPath>..\packages\AutoFixture.AutoMoq.3.18.5\lib\net40\Ploeh.AutoFixture.AutoMoq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.Idioms">
+      <HintPath>..\packages\AutoFixture.Idioms.3.18.5\lib\net40\Ploeh.AutoFixture.Idioms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildManagers\BuildAllTasksManagerTests.cs" />
+    <Compile Include="BuildManagers\Definitions\BuildTaskPhaseCollectionTests.cs" />
+    <Compile Include="BuildManagers\Definitions\BuildTaskPhaseTests.cs" />
+    <Compile Include="BuildManagers\Definitions\DependencyTests.cs" />
+    <Compile Include="BuildManagementIntegrationTests.cs" />
+    <Compile Include="BuildManagers\Exceptions\UnhandledTasksExceptionTests.cs" />
+    <Compile Include="BuildManagers\TaskExecutors\MultiThreadedBuildTaskExecutorTests.cs" />
+    <Compile Include="BuildManagers\TaskExecutors\SingleThreadedBuildTaskExecutorTests.cs" />
+    <Compile Include="BuildManagers\TaskManagers\BuildTaskProviderManagerTests.cs" />
+    <Compile Include="BuildManagers\TaskManagers\Dependencies\SimpleDependencyAlgorithmTests.cs" />
+    <Compile Include="CsProjects\Compilers\BuildEngineCompilerTests.cs" />
+    <Compile Include="CsProjects\Compilers\BuildEngineParametersTests.cs" />
+    <Compile Include="CsProjects\CsCompileTaskTests.cs" />
+    <Compile Include="CsProjects\CsProjectTests.cs" />
+    <Compile Include="CsProjects\ReferenceTests.cs" />
+    <Compile Include="CsProjects\SearchCriteria\CsProjectFileCriteriaTests.cs" />
+    <Compile Include="CsProjects\TaskProviders\CsCompileTaskFactoryTests.cs" />
+    <Compile Include="BuildManagers\TaskProviders\TypeMatchingTaskProviderTests.cs" />
+    <Compile Include="DLLs\DllFileProjectTests.cs" />
+    <Compile Include="DLLs\DllFileTaskTests.cs" />
+    <Compile Include="DLLs\SearchCriteria\DllFileCriteriaTests.cs" />
+    <Compile Include="DLLs\TaskProviders\DllFileTaskFactoryTests.cs" />
+    <Compile Include="DLLs\TaskProviders\DllFileTaskProviderTests.cs" />
+    <Compile Include="Locators\FileSystem\LocalComputerFileSystemTests.cs" />
+    <Compile Include="Locators\FileSystem\IgnoreFoldersFileSystemTests.cs" />
+    <Compile Include="Locators\LocatorsModuleTests.cs" />
+    <Compile Include="Locators\CriteriaProjectsLocatorTests.cs" />
+    <Compile Include="Locators\SearchCriteria\Templates\FileNameCriteriaTests.cs" />
+    <Compile Include="Locators\SearchCriteria\Templates\FileStreamCriteriaTests.cs" />
+    <Compile Include="NuGet\Configurations\HierachicalNuGetConfigFileReaderTests.cs" />
+    <Compile Include="NuGet\Downloaders\NuGetPackageScannerRepositoryFactoryTests.cs" />
+    <Compile Include="NuGet\Downloaders\RepositoryNuGetDownloaderTests.cs" />
+    <Compile Include="NuGet\NuGetPackageDownloadTaskTests.cs" />
+    <Compile Include="NuGet\NuGetPackageFileTests.cs" />
+    <Compile Include="NuGet\SearchCriteria\NuGetPackageFileCriteriaTests.cs" />
+    <Compile Include="NuGet\TaskProviders\NuGetPackageDownloadTaskFactoryTests.cs" />
+    <Compile Include="NUnit\NUnitTestTaskTests.cs" />
+    <Compile Include="NUnit\Runners\NUnitFileTestRunnerTests.cs" />
+    <Compile Include="NUnit\TaskProviders\NUnitTestTaskFactoryTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestSupport\Builders\BuildEngineCompilerBuilder.cs" />
+    <Compile Include="TestSupport\Builders\BuildTaskPhaseBuilder.cs" />
+    <Compile Include="TestSupport\Builders\BuildTaskPhaseCollectionBuilder.cs" />
+    <Compile Include="TestSupport\Builders\BuildTaskProviderManagerBuilder.cs" />
+    <Compile Include="TestSupport\Builders\CsCompileTaskBuilder.cs" />
+    <Compile Include="TestSupport\Builders\CsCompileTaskFactoryBuilder.cs" />
+    <Compile Include="TestSupport\Builders\CsProjectBuilder.cs" />
+    <Compile Include="TestSupport\Builders\CsProjectFileCriteriaBuilder.cs" />
+    <Compile Include="TestSupport\Builders\DependencyBuilder.cs" />
+    <Compile Include="TestSupport\Builders\DllFileProjectBuilder.cs" />
+    <Compile Include="TestSupport\Builders\DllFileTaskFactoryBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NuGetPackageDownloadTaskBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NuGetPackageDownloadTaskFactoryBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NuGetPackageFileBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NuGetPackageFileCriteriaBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NUnitCsProjectTestRunnerBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NUnitTestTaskBuilder.cs" />
+    <Compile Include="TestSupport\Builders\NUnitTestTaskFactoryBuilder.cs" />
+    <Compile Include="TestSupport\Builders\ProjectsLocatorBuilder.cs" />
+    <Compile Include="TestSupport\Builders\ReferenceBuilder.cs" />
+    <Compile Include="TestSupport\FileSystems\EmbeddedResourceFileSystem.cs" />
+    <Compile Include="TestSupport\Settings\TestDirectory.cs" />
+    <Compile Include="TestSupport\Settings\TestSettings.cs" />
+    <Compile Include="TestSupport\TestFileResourceProvider.cs" />
+    <Compile Include="TestSupport\Tools\UnzipTool.cs" />
+    <EmbeddedResource Include="TestSupport\OtherFiles\Program.cs" />
+    <EmbeddedResource Include="TestSupport\OtherFiles\HelloWorldLibrary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="TestSupport\OtherFiles\App.config" />
+    <EmbeddedResource Include="TestSupport\NuGet\PackageFiles\packages.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestSupport\ZipFiles\IntegrationTestBuildProject.zip" />
+    <EmbeddedResource Include="TestSupport\ZipFiles\NuGetLocalRepository.zip" />
+    <EmbeddedResource Include="TestSupport\ContentProjects\ContentProject.contentproj" />
+    <EmbeddedResource Include="TestSupport\ZipFiles\CompileErrorProject.zip" />
+    <EmbeddedResource Include="TestSupport\ZipFiles\NUnitTestProject.zip" />
+    <EmbeddedResource Include="TestSupport\ZipFiles\BindingRedirectTest.zip" />
+    <EmbeddedResource Include="TestSupport\ZipFiles\ProjectLibraryWithNoDependencies.zip" />
+    <EmbeddedResource Include="TestSupport\ZipFiles\ProjectExecutableWithNoDependencies.zip" />
+    <EmbeddedResource Include="TestSupport\NuGet\ConfigFiles\ConfigWithSingleActivePackageSource.config" />
+    <EmbeddedResource Include="TestSupport\NuGet\ConfigFiles\ConfigWithSeveralPackageSource.config" />
+    <EmbeddedResource Include="TestSupport\NuGet\ConfigFiles\ConfigClearsInTheMiddleOfPackageSource.config" />
+    <EmbeddedResource Include="TestSupport\NuGet\ConfigFiles\ConfigWithSingleNonClearingPackageSource.config" />
+    <EmbeddedResource Include="TestSupport\NuGet\ConfigFiles\ConfigWithHttpPackageSource.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuildManagement\BuildManagement.csproj">
+      <Project>{47319978-de22-45ba-918d-696fa4e249a7}</Project>
+      <Name>BuildManagement</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestSupport\NuGet\Dependencies\Moq.dll" />
+    <EmbeddedResource Include="TestSupport\NuGet\Dependencies\NUnit.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestSupport\CsProjects\ProjectFiles\AnotherWorld.csproj" />
+    <EmbeddedResource Include="TestSupport\CsProjects\ProjectFiles\HelloWorld.csproj">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestSupport\OtherFiles\HelloWorld.sln" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestSupport\NuGet\Dependencies\StructureMap.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestSupport\CsProjects\ProjectFiles\UnsupportProject.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestSupport\NuGet\ConfigFiles\ConfigWithOnlyOnePackageSource.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

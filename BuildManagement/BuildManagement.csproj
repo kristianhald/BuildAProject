@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{47319978-DE22-45BA-918D-696FA4E249A7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BuildAProject.BuildManagement</RootNamespace>
+    <AssemblyName>BuildAProject.BuildManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Build" />
+    <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
+    <Reference Include="NuGet.Core, Version=1.6.30117.9648, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NuGet.Core.2.8.1\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.VisualStudio">
+      <HintPath>..\packages\NuGet.VisualStudio.2.8.1\lib\net40\NuGet.VisualStudio.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\NUnit.Runners.2.6.3\tools\lib\nunit.core.interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BuildManagers\BuildAllTasksManager.cs" />
+    <Compile Include="BuildManagers\Definitions\BuildTaskPhase.cs" />
+    <Compile Include="BuildManagers\Definitions\BuildTaskPhaseCollection.cs" />
+    <Compile Include="BuildManagers\Definitions\Dependency.cs" />
+    <Compile Include="BuildManagers\Definitions\IBuildTask.cs" />
+    <Compile Include="BuildManagers\Definitions\IProject.cs" />
+    <Compile Include="BuildManagers\Exceptions\UnhandledTasksException.cs" />
+    <Compile Include="BuildManagers\IProjectBuildManager.cs" />
+    <Compile Include="BuildManagers\TaskExecutors\IBuildTaskExecutor.cs" />
+    <Compile Include="BuildManagers\TaskExecutors\MultiThreadedBuildTaskExecutor.cs" />
+    <Compile Include="BuildManagers\TaskExecutors\SingleThreadedBuildTaskExecutor.cs" />
+    <Compile Include="BuildManagers\TaskManagers\BuildTaskProviderManager.cs" />
+    <Compile Include="BuildManagers\TaskManagers\Dependencies\IDependencyAlgorithm.cs" />
+    <Compile Include="BuildManagers\TaskManagers\Dependencies\SimpleDependencyAlgorithm.cs" />
+    <Compile Include="BuildManagers\TaskManagers\IBuildTaskManager.cs" />
+    <Compile Include="BuildManagers\TaskManagers\IBuildTaskProvider.cs" />
+    <Compile Include="CsProjects\Compilers\BuildEngineCompiler.cs" />
+    <Compile Include="CsProjects\Compilers\BuildEngineParameters.cs" />
+    <Compile Include="CsProjects\Compilers\IDotNetCompiler.cs" />
+    <Compile Include="CsProjects\Compilers\Logging\BuildEngineLogger.cs" />
+    <Compile Include="CsProjects\Compilers\Logging\DotNetCompilerBuildError.cs" />
+    <Compile Include="CsProjects\Compilers\Logging\DotNetCompilerBuildFinished.cs" />
+    <Compile Include="CsProjects\Compilers\Logging\DotNetCompilerBuildStarted.cs" />
+    <Compile Include="CsProjects\Compilers\Logging\IDotNetCompilerLogger.cs" />
+    <Compile Include="CsProjects\CsCompileTask.cs" />
+    <Compile Include="CsProjects\CsProject.cs" />
+    <Compile Include="CsProjects\GAC\AssemblyInfo.cs" />
+    <Compile Include="CsProjects\GAC\GacApi.cs" />
+    <Compile Include="CsProjects\GAC\GacAssemblyLookup.cs" />
+    <Compile Include="CsProjects\GAC\IAssemblyCache.cs" />
+    <Compile Include="CsProjects\Reference.cs" />
+    <Compile Include="CsProjects\SearchCriteria\CsProjectFileCriteria.cs" />
+    <Compile Include="CsProjects\TaskProviders\CsCompileTaskFactory.cs" />
+    <Compile Include="BuildManagers\TaskProviders\TypeMatchingTaskProvider.cs" />
+    <Compile Include="BuildManagers\TaskProviders\IBuildTaskFactory.cs" />
+    <Compile Include="CsProjects\TaskProviders\CsCompileTaskProvider.cs" />
+    <Compile Include="DLLs\DllFileProject.cs" />
+    <Compile Include="DLLs\DllFileTask.cs" />
+    <Compile Include="DLLs\SearchCriteria\DllFileCriteria.cs" />
+    <Compile Include="DLLs\TaskProviders\DllFileTaskProvider.cs" />
+    <Compile Include="DLLs\TaskProviders\DllFileTaskFactory.cs" />
+    <Compile Include="Locators\FileSystem\LocalComputerFileSystem.cs" />
+    <Compile Include="Locators\FileSystem\IgnoreFoldersFileSystem.cs" />
+    <Compile Include="Locators\IProjectsLocator.cs" />
+    <Compile Include="Locators\SearchCriteria\Templates\FileNameCriteria.cs" />
+    <Compile Include="Locators\SearchCriteria\IFileCriteria.cs" />
+    <Compile Include="Locators\FileSystem\ILocatorFileSystem.cs" />
+    <Compile Include="Locators\CriteriaProjectsLocator.cs" />
+    <Compile Include="Locators\SearchCriteria\Templates\FileStreamCriteria.cs" />
+    <Compile Include="NuGet\Configurations\HierachicalNuGetConfigFileReader.cs" />
+    <Compile Include="NuGet\Configurations\INuGetConfigFileReader.cs" />
+    <Compile Include="NuGet\Downloaders\INuGetDownloader.cs" />
+    <Compile Include="NuGet\Downloaders\INuGetRepositoriesFactory.cs" />
+    <Compile Include="NuGet\Downloaders\NuGetPackageScannerRepositoryFactory.cs" />
+    <Compile Include="NuGet\Configurations\NuGetConfig.cs" />
+    <Compile Include="NuGet\Downloaders\RepositoryNuGetDownloader.cs" />
+    <Compile Include="NuGet\NuGetPackageDownloadTask.cs" />
+    <Compile Include="NuGet\NuGetPackageFile.cs" />
+    <Compile Include="NuGet\SearchCriteria\NuGetPackageFileCriteria.cs" />
+    <Compile Include="NuGet\TaskProviders\NuGetPackageDownloadTaskFactory.cs" />
+    <Compile Include="NuGet\TaskProviders\NuGetPackageDownloadTaskProvider.cs" />
+    <Compile Include="NUnit\NUnitTestTask.cs" />
+    <Compile Include="NUnit\Runners\INUnitLogger.cs" />
+    <Compile Include="NUnit\Runners\ITestRunner.cs" />
+    <Compile Include="NUnit\Runners\NUnitFileTestRunner.cs" />
+    <Compile Include="NUnit\Runners\NUnitExecutionResult.cs" />
+    <Compile Include="NUnit\Runners\NUnitTestMethodResult.cs" />
+    <Compile Include="NUnit\Runners\NUnitStatus.cs" />
+    <Compile Include="NUnit\TaskProviders\NUnitTestTaskFactory.cs" />
+    <Compile Include="NUnit\TaskProviders\NUnitTestTaskProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CsProjects\GAC\Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppDomainExecutor\AppDomainExecutor.csproj">
+      <Project>{e388451f-7d13-4d71-923a-57a82b8f4c65}</Project>
+      <Name>AppDomainExecutor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
