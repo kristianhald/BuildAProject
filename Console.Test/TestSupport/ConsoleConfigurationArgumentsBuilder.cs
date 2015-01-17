@@ -8,9 +8,6 @@ namespace BuildAProject.Console.Test.TestSupport
     public string CompilationBasePathShortFormValue = null;
     public string CompilationBasePathLongFormValue = null;
 
-    public string NuGetPackagePathShortFormValue = null;
-    public string NuGetPackagePathLongFormValue = null;
-
     public string LogLevelShortFormValue = null;
     public string LogLevelLongFormValue = null;
 
@@ -28,14 +25,6 @@ namespace BuildAProject.Console.Test.TestSupport
           "--compilationbasepath",
           CompilationBasePathLongFormValue,
           "UnitTest_CompilationBasePath_Value"));
-
-      argumentsBuilder.Append(
-        SelectFormValueRequired(
-          "-n",
-          NuGetPackagePathShortFormValue,
-          "--nugetpackagepath",
-          NuGetPackagePathLongFormValue,
-          "UnitTest_NuGetPackagePath_Value"));
 
       argumentsBuilder.Append(
         SelectFormValue(

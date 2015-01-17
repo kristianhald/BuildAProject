@@ -37,12 +37,6 @@ namespace BuildAProject.Console.Configuration
         .WithDescription("Sets the base compilation path where everything is compiled to.");
 
       parser
-        .Setup<string>('n', "nugetpackagepath")
-        .Callback(value => nugetPackagePath = value)
-        .Required()
-        .WithDescription("Sets the nuget package path where the nuget packages are downloaded to.");
-
-      parser
         .SetupHelp("h", "help", "?")
         .Callback(message => System.Console.WriteLine(message));
 
@@ -130,17 +124,6 @@ namespace BuildAProject.Console.Configuration
         AssertIsParsed();
 
         return Path.GetFullPath(compilationBasePath);
-      }
-    }
-
-    private string nugetPackagePath;
-    public string NuGetPackagePath
-    {
-      get
-      {
-        AssertIsParsed();
-
-        return Path.GetFullPath(nugetPackagePath);
       }
     }
 

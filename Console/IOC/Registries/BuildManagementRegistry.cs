@@ -47,9 +47,7 @@ namespace BuildAProject.Console.IOC.Registries
         .Use<HierachicalNuGetConfigFileReader>();
 
       For<INuGetDownloader>()
-        .Use<RepositoryNuGetDownloader>()
-        .Ctor<string>()
-        .Is(context => context.GetInstance<ConsoleConfiguration>().NuGetPackagePath);
+        .Use<RepositoryNuGetDownloader>();
 
       For<ILocatorFileSystem>()
         .Use<LocalComputerFileSystem>()
