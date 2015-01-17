@@ -12,8 +12,8 @@ This section assumes that you have cloned or copied the source code onto you loc
 If everything goes well, the last lines shown in Powershell will be a build report with a status on each step in the build and status: ok.
 
 The compiled files necessary to execute the build tool are located in:
-```Powershell
-  $ $BuildAProject\compile\build
+```
+  $BuildAProject\compile\build
 ```
 
 ## Acknowledgments
