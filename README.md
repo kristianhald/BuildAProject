@@ -13,8 +13,21 @@ If everything goes well, the last lines shown in Powershell will be a build repo
 
 The compiled files necessary to execute the build tool are located in:
 ```
-  $BuildAProject\compile\build
+   $BuildAProject\compile\build
 ```
+
+## Executing the application
+After building the application it is now possible to execute the application and build all projects in the provided path.
+The application has the following parameters in your favorite shell:
+```
+   .\BuildAProjectCmd.exe -b <root directory of projects> -c <root folder of compiled files> -l <loglevel>
+```
+
+**root directory of projects** tells the application that all C# projects found at the provided directory and all subdirectories are to be compiled, unless an 'ignorefile' states a folder should be ignored by the application. The application will determine the dependencies between the projects based on the references in the .csproject files and compile each project in accordance with the dependencies.
+
+**root folder of compiled files** tells the application where the output of the compiled projects must be placed. Projects generating a .dll file will be placed in *libraries\\{name of project}*, while projects generating .exe file will be placed in *executable\\{name of project}* along with the library files the executable file requires.
+
+**loglevel** is best set with the value 5, as it will give information that it is running, but not provide information on each project compiled, nuget package downloaded or assembly tested. If this information is relevant for you, then raise the loglevel. Maximum is 9.
 
 ## Acknowledgments
 NUnit - Portions Copyright © 2002-2009 Charlie Poole or Copyright © 2002-2004 James W. Newkirk, Michael C. Two, Alexei A. Vorontsov or Copyright © 2000-2002 Philip A. Craig 
