@@ -37,7 +37,7 @@ The application has the following parameters in your favorite shell:
 The way I use the application is that I have a single directory named *projects* where all my solutions are located. Several of the solutions are support tools, that I reuse between solutions and therefore I want to make certain that when I change one of these, the other still work as expected.
 
 I open a Powershell and do the following commands:
-```
+```Powershell
    cd c:\projects
    .\buildaprojectcmd -b . -l 5 -c compiled
 ```
